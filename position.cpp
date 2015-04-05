@@ -1960,7 +1960,14 @@ namespace PositionSpace
 		if(p.is_san_move_legal(san))
 		{
 		
-			cout << "adding move: " << p.try_move.algeb() << endl;
+			cout << "adding move: "
+			<< p.fullmove_number
+			<< (p.turn==WHITE?". ":". ... ")
+			<< p.to_san(p.try_move) 
+			<< " ( "
+			<< p.try_move.algeb()
+			<< " ) "
+			<< endl;
 			p.make_move(p.try_move);
 			cout << "resulting fen: " << p.report_fen() << endl;
 			add_position(p);
