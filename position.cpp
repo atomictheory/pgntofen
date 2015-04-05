@@ -1803,7 +1803,7 @@ namespace PositionSpace
 		
 		if(type & EP_CAPTURE_MOVE)
 		{
-			strcpy(to_san_ptr," e.p.");
+			//strcpy(to_san_ptr," e.p.");
 		}
 		
 		if(type & PROMOTION_MOVE)
@@ -1830,8 +1830,11 @@ namespace PositionSpace
 		{
 			if(dummy.is_in_check(dummy.turn))
 			{
-				*to_san_ptr++='#';
-				*to_san_ptr=0;
+				if(!dummy.is_exploded(dummy.turn))
+				{
+					*to_san_ptr++='#';
+					*to_san_ptr=0;
+				}
 			}
 			else
 			{
